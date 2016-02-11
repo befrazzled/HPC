@@ -1,0 +1,3744 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Computing in Python\n",
+    "============="
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Table of Contents\n",
+    "* [1. Introduction](#1.-Introduction)\n",
+    "\t* [1.1 Basics](#1.1-Basics)\n",
+    "\t\t* [1.1.1 Why python?](#1.1.1-Why-python?)\n",
+    "\t\t* [1.1.2 Our first python program](#1.1.2-Our-first-python-program)\n",
+    "\t\t* [1.1.3 Comments](#1.1.3-Comments)\n",
+    "\t* [1.2 Using python as a simple calculator](#1.2-Using-python-as-a-simple-calculator)\n",
+    "* [2. Variables and Types](#2.-Variables-and-Types)\n",
+    "\t* [2.1 Variable names](#2.1-Variable-names)\n",
+    "\t* [2.2 Reserved words in Python](#2.2-Reserved-words-in-Python)\n",
+    "\t* [2.3 Assignments](#2.3-Assignments)\n",
+    "\t* [2.4 Numericl types](#2.4-Numericl-types)\n",
+    "\t\t* [2.4.1 Type conversion](#2.4.1-Type-conversion)\n",
+    "\t\t* [2.4.2 Integer division](#2.4.2-Integer-division)\n",
+    "* [3. Containers: Sequences and collections](#3.-Containers:-Sequences-and-collections)\n",
+    "\t* [3.1 Lists](#3.1-Lists)\n",
+    "\t\t* [3.1.1 List Operations](#3.1.1-List-Operations)\n",
+    "\t* [3.2 Tuples](#3.2-Tuples)\n",
+    "\t* [3.3 Strings](#3.3-Strings)\n",
+    "\t\t* [3.3.1 Formatting Strings](#3.3.1-Formatting-Strings)\n",
+    "\t* [3.4 Sets](#3.4-Sets)\n",
+    "\t* [3.5 Dictionaries](#3.5-Dictionaries)\n",
+    "\t* [3.6 Assignment operator revisited](#3.6-Assignment-operator-revisited)\n",
+    "* [4. Control Flow](#4.-Control-Flow)\n",
+    "\t* [4.1 if/elif/else](#4.1-if/elif/else)\n",
+    "\t\t* [4.1.1 Boolean expressions](#4.1.1-Boolean-expressions)\n",
+    "\t\t* [4.1.2 Conditional expressions](#4.1.2-Conditional-expressions)\n",
+    "\t* [4.2 Loops](#4.2-Loops)\n",
+    "\t\t* [4.2.1 for](#4.2.1-for)\n",
+    "\t\t* [4.2.2 while](#4.2.2-while)\n",
+    "\t\t* [4.2.3 Break out of enclosing for/while loop:](#4.2.3-Break-out-of-enclosing-for/while-loop:)\n",
+    "\t\t* [4.2.4 Continue the next iteration of a loop:](#4.2.4-Continue-the-next-iteration-of-a-loop:)\n",
+    "\t\t* [4.2.5 Enumerating the sequence](#4.2.5-Enumerating-the-sequence)\n",
+    "\t\t* [4.2.6 More loops](#4.2.6-More-loops)\n",
+    "\t\t* [4.2.7 List comprehensions](#4.2.7-List-comprehensions)\n",
+    "* [5. Input and output](#5.-Input-and-output)\n",
+    "\t* [5.1 Formatting strings](#5.1-Formatting-strings)\n",
+    "\t* [5.2 Reading a file](#5.2-Reading-a-file)\n",
+    "* [6. Functions](#6.-Functions)\n",
+    "\t* [6.1 Passing arguments in Python](#6.1-Passing-arguments-in-Python)\n",
+    "\t* [6.2 Docstrings](#6.2-Docstrings)\n",
+    "\t* [6.3 Default values and optional parameters](#6.3-Default-values-and-optional-parameters)\n",
+    "* [7. Modules](#7.-Modules)\n",
+    "* [8. Classes](#8.-Classes)\n",
+    "\t* [8.1 Inheritance and polymorphism](#8.1-Inheritance-and-polymorphism)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 1. Introduction"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This part of the High Performance Computing course will introduce the core ideas needed for programming in Python. The course is addressed to students with little programming experience. The first lessons will introduce basic concepts used in Python that are relevant for scientific computing and later ones will make use of numerical libraries or packages that will facilitate the development of highly efficient codes in Python.\n",
+    "Concepts and ideas will be illustrated through examples and exercises throughout this text. This text does not attempt to cover all the facets of Python and it is highly recommended that students look elsewhere for material that cover other aspects of Python in more detail.\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1.1 Basics"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Computer's central processing units (CPU) can only execute machine code or machine language. This is the lowest-level representation of a computer program that is hardware-dependent programming language. Machine code is very hard to understand for humans so that nowadays most programs are written in a compiled or interpreted high level programing language.\n",
+    "A computer program is a sequence of instructions given to a CPU for execution. A Python program can be simply a plain text file that follows a special syntax and it usually has a \".py\" extension.  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.1.1 Why python?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "In contrast to other popular programming languages such as C, C++ and FORTRAN, Python strives to provide a simple, yet powerful syntax that is easy to code. The main advantage of compiled languages is speed, they are very fast and it is very hard to outperform them. On the other hand, they are hard to develop and debug, and many of them require manual memory management. Python is an scripting language that has an interactive console.  There is a vast amount of scientific computing packages and libraries. Python is a dynamic language, fully modular, free and open source."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "### 1.1.2 Our first python program"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "As mentioned above, Python programs should be written in a particular syntax. In this course Python 3.x syntax will be used. The syntax should be correct or the interpreter will generate errors and the program will fail to execute.\n",
+    "One of the simplest program we can write is:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "format": "row",
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print(\"Hello World\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Help can be accessed using the \"?\" operator after an object"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "format": "column",
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.1.3 Comments"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Along with statements, it is very informative to provide comments. They are used to provide information and the ideas behind the implementation. In Python comments always start with the `#` character. Comments are ignored by the interpreter. e.g:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "# This is a comment"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1.2 Using python as a simple calculator"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "format": "row"
+   },
+   "source": [
+    "Python can also be used as a calculator by entering a series of commands in the Python prompt that are immediately evaluated and carried out by the Python interpreter. This is a very useful and easy way for programmers to first understand commands and later debug programs.\n",
+    "This interactive way of working with Python is known as Read-Eval-Print Loop (REPL) as the way Python interpreter carries out the commands.\n",
+    "We can now enter commands, for example `2*2` and then press `shift+enter` (in this notebook).\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "format": "row",
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "2*2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Python supports all the basic operations such as addition (`+`), subtraction (`-`), multiplication (`*`), division (`/`) and  exponentation (`**`)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "100+10"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "25-1.5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "3*5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "10/2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "2**3    # We can add comments on the same line as the code"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "When 2 or more statements are included in a cell, only the last statment output is returned"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "2+1\n",
+    "3*2\n",
+    "3.7/2.3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "# 2. Variables and Types"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A variable is the basis of every programming language. It is a storage location paired with an associated symbolic name or identifier. Variables are used to store values. The variable name is the usual way to reference the stored value; this separation of name and content allows the name to be used independently of the exact information it represents. WIthout variables it will be impossible to perform meaningful computations.\n",
+    "Type specifies the variable's type. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2.1 Variable names"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Programmers should use descriptive variable names such as height, width, etc. These names should be preferred to h, w, etc. A variable's name should be related to its purpose within the code. Good choice of variables names make the programs easier to read and understand. \n",
+    "Python has strict rules for variable names:\n",
+    "* They should contain at least one character.\n",
+    "* The first character should be an alphabetic letter.\n",
+    "* The remaining characters maybe alphabetic characters, digits or the underscore.\n",
+    "* No other character is allowed.\n",
+    "* Reserved words cannot be used."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "## 2.2 Reserved words in Python"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are several words reserved in Python and they are use to build up the Python language. These reserved words cannot be used as variable names:\n",
+    "`and, as, assert, break, class, continue, def, del, elif, else, except, False, finally, for, from, global, if, import, in, is, lambda, None, nonlocal, not, or, pass, raise, return, True, try, with, while`, and `yield`.\n",
+    "\n",
+    "It is also highly recommended not to use any of the following words either, even though they are not strictly Python reserved words, they conflict names of commonly-used Python functions:\n",
+    "`Data, Float, Int, Numeric, array, close, float, int, input, open, range, type, write` and `zeros`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2.3 Assignments"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In several programming languages the `=` operator is the assignment operator. This operator is used in an assignment statement that associates a value with a variable. The variable name is the left hand side of the operator and the value is the right hand side.\n",
+    "The meaning of the assignment operator `=` is different from equality sing in mathematics. In mathematics, `=` asserts that the expression on its left is equal to the expression on its right. In Python, `=` assigns the value of the expression on its right to the variable on its left. e.g.:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "x = 25 + 3/4\n",
+    "print(x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2.4 Numericl types"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The basic numerical types in Python are: integer, float, complex and boolean:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "a = 5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "type(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "b = 5.1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "type(b)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "c = 2.1 + 4.7j"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "type(c)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "d = True"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "type(d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.4.1 Type conversion"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Sometimes, programmers need to convert a variable from one type to another. This is also known as casting. \n",
+    "Python includes functions for doing this task:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "e = float(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print(a, type(a))\n",
+    "print(e, type(e))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.4.2 Integer division"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Integer division occurs when dividing two integer numbers. It is a very common source for bugs in codes. Integer division behaviour is common in most programming languages including C, C++ and Fortran as well as Python 2.x. Programmers should be aware of this issue. \n",
+    "When we provide two integer numbers to the division operator, These languages make the assumption that that we seek a return value of type integer.\n",
+    "The behaviour of the division operator has changed in Python 3 and the operator returns a float:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "10/2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "10/3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If the programmer needs to perform an explicit integer division the // operator should be used"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "10//2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "10//3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 3. Containers: Sequences and collections"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Python has different efficient types of containers. These containers are used to store collections of objects. These containers can be classified as mutable and immutable. Immutable sequences are the ones that single elements cannot be changed, while changes are allowed in mutable containers."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3.1 Lists"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A list is an ordered collection of objects, that can be of different type. A Python list can be used to store several objects using a single variable. We can work with all objects as a whole or access individual elements of the group.\n",
+    "\n",
+    "Square brackets (`[]`) are used for creating lists, the elements inside the list are separated by commas:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "L = ['red', 1, 'dog', 0.2, 2.14, 5]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "type(L)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Every element in a list is associated with an index reflecting its position in the list. The first element of a list has index 0. In order to access an element we simply write the name of the list and the element index in square brackets:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Elements can also be accessed by counting from the end of the lists using negative indices:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L[-2]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "List are mutable objects that can be modified. An element of a list can be modified by assigning a new value to the list index."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L[1] = 3\n",
+    "print(L)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Lists can also be sliced obtaining sublists of regularly spaced elements. The slicing syntax is as follows: `L[start:stop:stride]`. The returned sublist contains elements with indices i such as $start \\le i < stop$. All slicing parameters are optional. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L[1:3]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L[0:5:2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L[:3]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "An empty list is created by `[]`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a = []\n",
+    "print(type(a))\n",
+    "print(len(a))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.1.1 List Operations"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are several operations that can be performed on lists. The number of elements in a list can be obtained using the function `len()`. We can add, insert or delete elements in a list. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "len(L)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are four ways for adding items to a list. The first way is to concatenate another list using the \"`+`\" operator, `L.insert(i, e)` will insert an element `e` in position number `i` in the list. `L.append(e)` will append a single element `e` to the end of the list.  `L.extend(L1)` will append each of the elements or items in `L1` to the end of the original list `L`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L = L + [1, True]\n",
+    "print(L)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L.insert(2, 1+2j)\n",
+    "print(L)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L.append([1,2])\n",
+    "print(L)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L.extend([3,4])\n",
+    "print(L)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Notice the difference between append and extend. `append()` takes the argument and adds it to the list as the last element. `extend()` takes every element in the argument and appends each item to the original list"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "An element can be removed with `del L[i]` when we know the element index. We can also remove an item by its value with `L.remove(e)`. \n",
+    "\n",
+    "`L.pop()` can also be used to remove items from a list. When called without arguments it removes the last item in the list and returns the value it removed."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "del L[2]\n",
+    "print(L)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L.remove(True)\n",
+    "print(L)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a = L.pop(3)\n",
+    "print(a)\n",
+    "print(L)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "It is also possible to find the index of the first occurrence of a value in the list. `index()` is used for this purpose"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "L.index(3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Notice that the value '3' occurred twice in the list 'L'."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For discovering more methods we can use tab completion."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# Position your cursor after the . and hit the Tab key:\n",
+    "# L.<TAB>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can also use the `help()` command to discover methods:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "help(list)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3.2 Tuples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A tuple is an immutable list. Once a tuple is created, it cannot be modified. Tuples elements are written between parenthesis or just separated by commas:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "t = 'one', 'two', 'three'\n",
+    "u = (1, 2, 3)\n",
+    "print(type(t), type(u))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Items of a tuple can be accessed using square brackets:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "t[1]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If we try to change a tuple item we will get a `TypeError` exception:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "t[2] = 'four'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The empty tuple is given by ()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "t = ()\n",
+    "print(type(t))\n",
+    "print(len(t))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The correct way yo create a tuple with a single value is to add a comma after the value:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "t = (1)\n",
+    "type(t)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "t = 1,\n",
+    "type(t)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Tuples can be use to assign multiple values at once:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "vals = 1, 2, 3\n",
+    "x, y, z = vals\n",
+    "print(z, y, x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3.3 Strings"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A string is an immutable sequence of characters, different syntaxes can be used to create strings: simple, double or triple quotes:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s1 = 'Hello there'\n",
+    "s2 = \"How are you\"\n",
+    "s3 = '''Hi,\n",
+    "how do you do? '''      # Triple quotes allows the string to span more than on line\n",
+    "print(s1)\n",
+    "print(s2)\n",
+    "print(s3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "When a multiple line string is created the the end-of-line character (\\n) is automatically added."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Strings, like lists, can be sliced using the same syntax and rules:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s1[0]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s2[:7]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s1[1::2] # every second characters, starting in the second element to the end"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Strings are immutable objects and it is not possible to modify its content. However there are methods that allow us to create new strings from the original one."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s1[2] = 'b'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s1.replace('l', 'z')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print(s1) # s1 was not modified"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are many more methods for Strings. Remember you can use tab completion or `help(str)` to search for new methods."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3.1 Formatting Strings"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The simplest way to format strings is to insert a value into a string with a single placeholder {}. If there are several placeholders, the first place holder is replaced by the first argument, the second placeholder by the second argument and so on.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "username = 'Omar'\n",
+    "password = '1234'\n",
+    "\"{}'s password is {}\".format(username, password)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can also use format specifiers that give us more control of how the text will be displayed. They work like the `printf()` function in C. Within a replacement field, a colon (:) marks the start of the format specifier. In the example below the format specifier \".2\" indicates that the value will be shown with 2 decimal places and \"f\" means \"fixed point\" notation.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "'1000000 bytes are approximately {:.2f} kB'.format(1000000/1024)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For more details see the [Format Specification Mini-Languag](https://docs.python.org/2.7/library/string.html#format-examples) in the official Python documentation."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3.4 Sets"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Sets are collection of unordered, unique items:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s = set(('a', 'b', 'c', 'd', 'b'))\n",
+    "print(s)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A set can also be created using curly brackets:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s1 = {'b', 'e'}\n",
+    "print(type(s1))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Python provides all set operations including: union, intersection, difference and many more."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s.union(s1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s.intersection(s1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s.difference(s1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Items can be added to existing sets in two different ways: `add()` and `update()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s.add('z')\n",
+    "print(s)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s.update(s1)\n",
+    "print(s)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Items of a set can be removed using `discard()`, `remove()` and `pop()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s.discard('d')\n",
+    "print(s)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s.discard('x') \n",
+    "'''if you call the discard() method with a value not included in the set, \n",
+    "it does nothing '''\n",
+    "print(s) \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s.remove('a')\n",
+    "print(s)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "s.remove('x')\n",
+    "'''if you call the remove() method with a value not included in the set, \n",
+    "it raise KeyError exception'''\n",
+    "print(s) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Since sets are unordered collection, there is no way to control which value will be removed"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print(s)\n",
+    "s.pop()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print(s)\n",
+    "s.pop()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3.5 Dictionaries"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A dictionary in Python is an unordered container of key-value pairs, that is an efficient table that maps keys to values.\n",
+    "There are several ways of creating a dictionary. An empty dictionary can be created using curly braces (`{}`) or using the function `dict()`:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "d = {}\n",
+    "type(d)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "len(d)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "d = dict()\n",
+    "type(d)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print(d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A dictionary can be produced by creating an empty dictionary and then adding key-value pairs:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "d = {} # First create an empty dictionary \n",
+    "d['elements'] = (3, 4) # Add key-valule pairs\n",
+    "d['nodes'] = (10, 11, 12, 13)\n",
+    "print(d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Another way of populating a dictionary is at creation time. This way to create a dictionary is to use similar syntax to sets, but we input key-value pairs. Once a dictionary is created, we can look up values by their key:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "d1 = {'elements': (1, 2), 'nodes': (1, 2, 3, 4)}\n",
+    "print(d)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "d1['elements']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "d1['nodes']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Useful dictionary methods include `keys()`, `values()`, `items()`:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "d.keys()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "d.values()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "d.items()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The key should be any immutable Python object including numbers, strings and tuples. Dictionaries are very fast in retrieving values when the key is given."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3.6 Assignment operator revisited"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Assignment operators (`=`) are used to (re)bind variables to values and to modify attributes or items of mutable objects.\n",
+    "A single object can have several variable names bound to it:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a = ['a', 'b', 'c', 'd']\n",
+    "b = a\n",
+    "print('a = ', a)\n",
+    "print('b = ', b)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "b == a"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "b is a"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Two types of copy operations can be applied to container objects, a shallow and a deep copy. A shallow copy created a new object, but the object is populated with *references* to the items contained in the original object.\n",
+    "In this case both objects point to the same memory location. We can see this by applying the `id()` function."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "b = [1, 2, 3, 4]\n",
+    "a = b                # Create a shallow copy of b.\n",
+    "print(a)\n",
+    "print(b)\n",
+    "print(id(a), id(b))  # Both objects point to the same memory location"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a = ['a', 'b', 'c', 'd'] # Assign new list object to a\n",
+    "print(a)\n",
+    "print(b)\n",
+    "print(id(a), id(b))      # Objects point to different memory locations"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A new memory location had been allocated for `a`, because we have assigned a complete new list object to this variable."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "b = [1, 2, 3, 4]\n",
+    "a = b                # Create a shallow copy of b.\n",
+    "print(a)\n",
+    "print(b)\n",
+    "print(id(a), id(b))  # Both objects point to the same memory location"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a[0] = 9\n",
+    "print(id(a), id(b))  # Both objects still point to the same memory location\n",
+    "print(a)\n",
+    "print(b)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There has been no new assignment to `a`, only to one of its elements, therefore both variables still point to the same list object. In order to avoid those side effects, it is possible to make a shallow copy of an object using the slice operator: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a = ['a', 'b', 'c', 'd']\n",
+    "b = a[:]\n",
+    "b[1] = 'x'\n",
+    "print('b = ', b)\n",
+    "print('a = ', a)\n",
+    "print(id(a), id(b)) \n",
+    "b is a"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This strategy stops working once we have nested objects:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "b = [1, 2, [3, 4]]\n",
+    "a = b[:]          # Create a shallow copy of b.\n",
+    "a.append(100)     # Appsend element to a.\n",
+    "print('a = ', a)  # An element has been added to a\n",
+    "print('b = ', b)  # b is unchanged.\n",
+    "a[0] = -99        # Modify 0th element of a.\n",
+    "a[2][1] = -100    # Modify an element of a.\n",
+    "print('a = ', a)  # Both elements are changed in a\n",
+    "print('b = ', b)  # Only the element in the sublist is changed in b.\n",
+    "b is a"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If we assign values to the 0th or 1st element of either list, the lists behave as different objects. Problems arise, if you change one of the elements of the sublist."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A deep copy creates a new object and recursively copies all the objects it contains. A solution to the described problems is provided by the module \"copy\", the `deepcopy()` function in the standard library can be used, as shown in the following example: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "from copy import deepcopy\n",
+    "a = ['a','b',['ab','ba']]\n",
+    "b = deepcopy(a)            # Create a shallow copy of a.\n",
+    "b[2][1] = \"d\"              # Assign a new value to an element in a sublist\n",
+    "a[0] = \"c\"                 # Assign a new value in the 0th position\n",
+    "print('a = ', a)           # Only 0th position is changed\n",
+    "print('b = ', b)           # Only the element in the sublist is changed"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 4. Control Flow"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For any python program, the python interpreter will start at the top and then process all the statements until the last one.\n",
+    "In this part, constructs that allow program statements to be optionally executed are introduced. This constructs controls the *order* in which the code is executed.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 4.1 if/elif/else"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "if True:\n",
+    "    print(\"Obvious!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Blocks are delimited by *indentation*. Convention in Python is to use 4 spaces, no hard Tabs:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a = 10\n",
+    "if a == 1:\n",
+    "    print(1)\n",
+    "elif a == 2:\n",
+    "    print(2)\n",
+    "else:\n",
+    "    print('A lot')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.1.1 Boolean expressions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    " Any expression that has a evaluates to True or False is known as logical or boolean expression.\n",
+    " \n",
+    " The comparison operators are:\n",
+    "* C == 40 # C equals 40\n",
+    "* C != 40 # C does not equal 40\n",
+    "* C >= 40 # C is greater than or equal to 40\n",
+    "* C > 40 # C is greater than 40\n",
+    "* C < 40 # C is less than 40\n",
+    "\n",
+    "The following boolean operators can also be used:\n",
+    "* not\n",
+    "* and\n",
+    "* or"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.1.2 Conditional expressions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "if < OBJECT >: *Evaluates to False*:\n",
+    "* any number equal to zero (0, 0.0, 0+0j)\n",
+    "* an empty container (list, tuple, set, dictionary, ...)\n",
+    "* **False**, **None**\n",
+    "\n",
+    "*Evaluates to True*: everything else\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "dict = {}\n",
+    "if dict:\n",
+    "    print('Dictionary is not empty')\n",
+    "else:\n",
+    "    print('Dictionary is empty')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a = 1\n",
+    "if a:\n",
+    "    print(a)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**a == b**: Tests equality, with logics:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "1 == 1."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**a is b**: Tests identity: both sides are the same object:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "1 is 1."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a = 1\n",
+    "b = 1\n",
+    "a is b"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**a in b**: For any collection **b**: **b** contains **a**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "b = [1,2,3]\n",
+    "2 in b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "5 in b"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If **b** is a dictionary, this tests that **a** is a key of **b**."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 4.2 Loops"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2.1 for"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Repetitive tasks in a program can be automated by loops.\n",
+    "For loops are traditionally used when you have a piece of code needs to be repeated several times.\n",
+    "\n",
+    "**for**/**range** iterating with an index:\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "for i in range(4):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "for i in range(4):\n",
+    "    print(i, end=' ')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a_list = ['cool', 'powerful', 'readable']\n",
+    "for i in range(len(a_list)):\n",
+    "    print('Python is {}'.format(a_list[i]))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "But most often, it is more readable to iterate over values:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a_list = ['cool', 'powerful', 'readable']\n",
+    "for word in a_list:\n",
+    "    print('Python is %s' % word)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2.2 while"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "While loops are used when a condition is to be met. The while loop will repeat a set of statements as long as a this condition is true.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "z = 1+1j"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "while abs(z) < 100:\n",
+    "    print(z)\n",
+    "    z = z**2 + 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "z, abs(z)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2.3 Break out of enclosing for/while loop:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "z = 1+1j\n",
+    "while abs(z) < 100:\n",
+    "    print(z, z.imag, abs(z))\n",
+    "    if z.imag == 4:\n",
+    "        break\n",
+    "    z = z**2 + 1\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "z, z.imag, abs(z)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2.4 Continue the next iteration of a loop:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "a = [1, 0, 2, 4]\n",
+    "for element in a:\n",
+    "    if element == 0:\n",
+    "        continue\n",
+    "    print(1/element)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "It is possible to iterate over any sequence (string, list, keys in dictionary, lines in file, etc.). This can make the code very readable, eliminating the use of indices."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "vowels = 'aeiouy'\n",
+    "for i in 'powerful':\n",
+    "    if i in vowels:\n",
+    "        print((i),end=' ')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "message = \"Hello how are you?\"\n",
+    "message.split() # returns a list"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "for word in message.split():\n",
+    "    print(word)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2.5 Enumerating the sequence"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are two ways to enumerate a sequence. \n",
+    "\n",
+    "The first one is to keep track of the enumeration number:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "words=('cool','powerful','readable')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "for i in range(len(words)):\n",
+    "    print(i, words[i])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The second one is to use the **enumerate** keyword:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "for index, item in enumerate(words):\n",
+    "    print(index, item)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2.6 More loops"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Looping over a dictionary: use **items** or not:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "d = {'a':1, 'b':1.2, 'c':1j}\n",
+    "for key, val in d.items():\n",
+    "    print('Key: {} has value: {}'.format(key,val))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "for key in d: # Fast in both Python 2 and Python 3\n",
+    "    print('Key: {} has value: {}'.format(key,d[key]))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2.7 List comprehensions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "List comprehensions provide a concise way to create lists. Common applications are to make new lists where each element is the result of some operations applied to each member of another sequence or iterable, or to create a subsequence of those elements that satisfy a certain condition."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "[i**2 for i in range(8) if i%2==0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "** _Exercise_ **"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Compute the decimals of Pi using the Wallis formula: $\\pi = 2 \\prod_{i=1}^{\\infty} \\frac{4i^2}{4i^2 - 1}$."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 5. Input and output"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 5.1 Formatting strings"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are two ways of printing the output to the standard output and to files in Python.\n",
+    "\n",
+    "The old C style using the `printf` syntax:\n",
+    "The output is accomplished by a print statement combined with some technique for formatting the numbers:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "from math import cos, pi\n",
+    "a = 0\n",
+    "b = pi\n",
+    "I = -(cos(b) - cos(a)) \n",
+    "print('The integral of sin(x) from a = %.2f to b = pi is %f.' % (a, I))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The string above is formatted using `printf` syntax. This means that the string has various \"slots\", starting with a percentage sign, in this case %.2f and %f, where variables in the program can be put in. We have two \"slots\" in the present case, and thus two variables must be put into the slots. The relevant syntax is to list the variables inside standard parentheses after the string, separated from the string by a percentage sign. The first variable, a, goes into the fist \"slot\". This \"slot\" has a format specification %.2f, where the percentage sign marks the slot and the following characters,\n",
+    ".2f, are the format specification. The f in the .2f format stands for float, a short form for floating-point number with 2 decimal places, which is the term used for a real number on a computer.\n",
+    "\n",
+    "Here is a list of some important `printf` format specifications:\n",
+    "\n",
+    "| Format | Meaning | \n",
+    "| -------|:-------| \n",
+    "|%s |a string | \n",
+    "|%d |an integer|\n",
+    "|%0xd |an integer padded with x leading zeros|\n",
+    "|%f |decimal notation with six decimals|\n",
+    "|%e |compact scientific notation, e in the exponent|\n",
+    "|%E |compact scientific notation, E in the exponent|\n",
+    "|%g |compact decimal or scientific notation (with e)|\n",
+    "|%G |compact decimal or scientific notation (with E)|\n",
+    "|%xz |format z right-adjusted in a field of width x|\n",
+    "|%-xz |format z left-adjusted in a field of width x|\n",
+    "|%.yz |format z with y decimals|\n",
+    "|%x.yz |format z with y decimals in a field of width x|\n",
+    "|%% |the percentage sign (%) itself|\n",
+    "\n",
+    "The new (more recommended) way of formating strings is using the _format string syntax_: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print('The integral of sin(x) from a = {a:.2f} to b = pi is {I:f}.'.format(I=I, a=a))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The \"slots\" where variables are inserted are now recognized by curly braces (`{}`) instead of a percentage sign. The optional name of the variable is listed with an optional colon and format specifier of the same kind as was used for the `printf` format. The various variables and their values must be listed at the end inside the format method. Since the \"slots\" have names in this case, the sequence of variables is not important."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "See https://docs.python.org/3/library/string.html#formatspec for the format specification"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 5.2 Reading a file"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "To read a file, we first need to open the file. The function `open()` creates a file object, here stored in the variable `infile`. It is most commonly called using two arguments: the first argument is a string containing the filename and the second describes the way in which the file will be used."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "infile = open('./densities.txt', 'r') # Read input file\n",
+    "\n",
+    "#Print a file line by line\n",
+    "for line in infile:\n",
+    "    print(line, end= '')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# We can also read all the llines into a list\n",
+    "infile.seek(0) # First we need to go back to the start of the file\n",
+    "\n",
+    "lines = infile.readlines() # Read the file again\n",
+    "\n",
+    "print(lines) "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# We will store the valules in a dictionary using the material name as key:\n",
+    "densities = {}\n",
+    "for line in lines[1:]:\n",
+    "    mat, val = line.split('\\t')\n",
+    "    densities[mat] = val\n",
+    "    \n",
+    "# We can now print it nicely:\n",
+    "print('{:>15}{:>15}'.format('Material', 'Density'))    \n",
+    "for key, val in densities.items():\n",
+    "    print('{:>15}{:>15}'.format(key, val), end='')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "# Once we finish reading the file we should always close it\n",
+    "infile.close()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Sometimes Python interpreter will crash before the `close()` method is called, and the file could theoretically stay open much longer than necessary.\n",
+    "\n",
+    "The `with` statement is used in Python 3 to solve this problem. The with statement starts a code block where you can use the variable `infile` as the stream object returned from the call to `open()`. All the object methods are available. Once the with block ends, Python calls `infile.close()` automatically. furthermore Python will close that file even if it\n",
+    "exits through an unhandled exception and the entire program comes to a halt, that file will get closed."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "with open('./densities.txt', encoding='utf-8') as infile:\n",
+    "    densities = {}\n",
+    "    for line in infile:\n",
+    "        mat, val = line.split('\\t')\n",
+    "        densities[mat] = val\n",
+    "\n",
+    "for key, val in densities.items():\n",
+    "    print('{:>15}{:>15}'.format(key, val), end='')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 6. Functions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In any programing language like, the term function means more than just a mathematical function. It is a collection of statements that can be executed wherever and whenever inside a program. You may send variables, known as arguments, to the function to change what it is being computed, and the function may return new objects. \n",
+    "\n",
+    "Functions help to avoid duplicating code by putting all similar code in a common place. This strategy saves typing and makes it easier to change and maintain the program later. Functions are also often used to split a long program into smaller, more manageable pieces, so the program and your own thinking about it become clearer and organized. Functions are used to group a number of statements into a logical block\n",
+    "\n",
+    "Function blocks in Python must be indented as other control-flow blocks:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "def test():\n",
+    "    print('in test function')\n",
+    "test()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "import math\n",
+    "def disk_area(radius):\n",
+    "    return math.pi * radius * radius\n",
+    "disk_area(1.5)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**return** statement: functions can optionally return values. By default, functions return **None**.\n",
+    "\n",
+    "Note the syntax to define a function:\n",
+    "* the **def** keyword;\n",
+    "* is followed by the function's name, then;\n",
+    "* the arguments of the function are given between parentheses followed by a colon.\n",
+    "* the function body;\n",
+    "* and **return object** for optionally returning values."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "** _Exercise_ **"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Write a function that displays the n first terms of the Fibonacci sequence, defined by $$u_0=0; u_1=1, u_{n+2}=u_{n+1}+u_n$$."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We will now implement the Trapezoidal rule for numerical integration defined as:\n",
+    "$$\\int_{a}^{b}f(x)dx\\approx h\\left(\\frac{1}{2}f(a)+\\sum\\limits _{i=1}^{n-1}f(a+ih)+\\frac{1}{2}f(b)\\right)$$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "def trapezoidal(f, a, b, n):\n",
+    "    h = (b-a)/float(n)\n",
+    "    I = 0.5*f(a)\n",
+    "    for i in range(1, n):\n",
+    "        I += f(a + i*h)\n",
+    "    I += 0.5*f(b)\n",
+    "    I *= h\n",
+    "    return I"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "from math import sin\n",
+    "def f(x):\n",
+    "    return sin(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "from math import pi, cos\n",
+    "a = 0\n",
+    "b = pi\n",
+    "for i in range(4):\n",
+    "    Area = trapezoidal(f, a, b, 10**i)\n",
+    "    print('Area = {}; \\t n = {}'.format(Area, 10**i))\n",
+    "    \n",
+    "print('Exact value is: {}'.format(-cos(b)+cos(a)))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 6.1 Passing arguments in Python"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "When objects are passed to a function as arguments, In Python \"Object references are passed by value\". \n",
+    "\n",
+    "This means that the function will see the same object as in the calling code. The function does actually operate on the\n",
+    "same object, not a copy of it."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "def double_value(l):\n",
+    "    print('in double_value : l = {:}'.format(l))\n",
+    "    for i in range(len(l)):\n",
+    "        l[i] *= 2\n",
+    "    print('in double_value : changed l to l = {:}'.format(l))\n",
+    "    \n",
+    "l_global = [1, 2, 3]\n",
+    "print('In main: l = {:}'.format(l_global))\n",
+    "print('Executing double_value:')\n",
+    "double_value(l_global)\n",
+    "print('In main: l = {:}'.format(l_global))\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The variable `l` inside the function is a reference to the list object `l_global`. The line `l[i] *= 2` first evaluates the right-hand side by reading the element with index `i` and multiplying by two. A reference to this new object is then stored in the list object `l` at position with index `i`. We have thus modified the list object `l_global`, that is referenced through `l`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "def double_list(l):\n",
+    "    print('in double_list : l = {:}'.format(l))\n",
+    "    l = l*2\n",
+    "    print('in double_list : changed l to l = {:}'.format(l))\n",
+    "    \n",
+    "l_global = [1, 2, 3]\n",
+    "print('In main: l = {:}'.format(l_global))\n",
+    "print('Executing double_list:')\n",
+    "double_list(l_global)\n",
+    "print('In main: l = {:}'.format(l_global))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In contrast, in the previous example the elements of the list are not modified within the function.\n",
+    "In this case during the evaluation of `l = l*2` a new object is created that holds `l*2`, and then the name `l` is binded to it. In the process, the references to the list object `l_global` that was given to the function is lost.\n",
+    "\n",
+    "Python's behaviour of passing arguments to a function may appear to vary (pass by value versus pass by reference). However, it is always call by value, where the value is a reference to the object in question, and the behaviour can be explained\n",
+    "through the same reasoning in every case."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 6.2 Docstrings"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Documentation about what the function does and its parameters.\n",
+    "General convention:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "def funcname(params):\n",
+    "    \"\"\" Concise one-line sentence describing the function.\n",
+    "    \n",
+    "    Extended summary which can contain multiple paragraphs.\n",
+    "    \"\"\"\n",
+    "    # function body\n",
+    "    pass\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "funcname?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "help(funcname)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 6.3 Default values and optional parameters"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Functions can have optional and default values as illustrated in the next example.\n",
+    "\n",
+    "The following function prints the multiplication table for n, up to a given factor `upto`:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "def print_mult_table (n, upto=10):\n",
+    "    for i in range (1, upto + 1):\n",
+    "        print(\"{:3d} * {:d} = {:4d}\".format(i, n, i * n))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print_mult_table (5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print_mult_table (3, 4)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The function `print_mult_table` takes two arguments: `n` and `upto`. The first argument `n` is a \"normal\" variable and the  value of the argument `upto` is set to a default value of 10 if it is not defined, otherwise the passed value is used."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 7. Modules"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "When you quit from the Python interpreter and enter it again, the definitions you have made (functions and variables) are lost. Therefore, for writing longer programs, it is better to use a text editor to prepare the input for the interpreter and running it with that file as input instead. This is known as creating a script. \n",
+    "\n",
+    "In order to maintain and extend your code more easily, Python has a way to put definitions in a file and use them in a script or in an interactive instance of the interpreter. Such a file is called a module.\n",
+    "\n",
+    "Definitions from a module can be imported into other modules or into the main module (the collection of variables that you have access to in a script executed at the top level and in calculator mode). Modules are used to group functionality together, provide namespaces and extend Python.\n",
+    "\n",
+    "A module is created by putting a set of functions, definitions and statements in a file. The filename (minus the required extension .py) is the name of the module."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The following example illustrates the use of the module \"simpson.py\" to integrate a function using Simpson's rule\n",
+    "$$\\int_{a}^{b}f(x)dx\\approx\\frac{b-a}{3n}\\left(f(a)+4\\sum\\limits _{i=1}^{n/2}f(a+\\left(2i-1\\right)h)+2\\sum\\limits _{i=1}^{n/2-1}f(a+2ih)+f(b)\\right)$$\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "from math import pi, cos, sin\n",
+    "def f(x):\n",
+    "    return sin(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# First provide the python interpreter with the path-to-module. \n",
+    "import sys\n",
+    "sys.path.append('./') # The simplest solution is to append that path to sys.path list.\n",
+    "\n",
+    "import simpson \n",
+    "I = simpson.Simpson(f, 0, pi, 10)\n",
+    "print(I)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "# 8. Classes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "Object Oriented Programming (OOP) is a programming paradigm that allows you to use the best ideas from structured programming, but it also encourages you to decompose a problem into related subproblems, where each subproblems becomes a self-contained object that contains its own instructions (functions or methods) and data (variables or members). In this way complexity is reduced, reusability is increased and the programmer can manage larger programs more efficiently. In object-oriented programming, a class is a template (piece of code) for creating objects.\n",
+    "\n",
+    "When an object is created by a constructor of the class, the resulting object is called an instance of the class, and the member variables specific to the object are called instance variables, to contrast with the class variables shared across the class.\n",
+    "\n",
+    "A class in Python is very simple, it starts with the reserved word `class`  followed by the name of the class. Technically, that is all that is required:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "class MyClass():\n",
+    "    pass"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Classes can be used to define several functions with parameters.\n",
+    "\n",
+    "We can take Newton's Law of Universal Gravitation as example:\n",
+    "$$F=G\\frac{m_1m_2}{r^2}$$\n",
+    "\n",
+    "So that $F=f(r ; m_1, m_2)$. F is a function of $r$, but it also depends on other parameter, $m_1$ and $m_2$, $G$ is the gravitational constant and it is equal to  6.674×10<sup>−11</sup> N·(m/kg)<sup>2</sup>.\n",
+    "\n",
+    "We could implement it using functions:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "def F(r, m1, m2):\n",
+    "    G = 6.674e-11\n",
+    "    return G*m1*m2/r**2\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's suppose we want to differentiate the function numerically using the approximation:\n",
+    "$$f'(x)\\approx\\frac{f(x+h)-f(x)}{h}$$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "def diff(f, x, h=1E-4):\n",
+    "    return (f(x+h) - f(x))/h"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Unfortunately `diff` will not work with our function `F`, since it is only being called with one argument and it needs 3 arguments to be passed. To make it even more complicated, let's suppose we need to differentiate 2 or more functions with different parameters. We will need to define all the parameters for every time we change them (that would get very confusing), or create the function several times (that is not convenient):"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# Calculate the gravitational force between earth and the moon\n",
+    "m1 = 5.97e24  # [Kg] Mass of earth\n",
+    "m2 = 7.35e22  # [Kg] Mass of the moon\n",
+    "rem = 384400000  # [m] distance between earth and moon\n",
+    "\n",
+    "Fem = F(rem, m1, m2)\n",
+    "print(Fem)\n",
+    "\n",
+    "# Find the derivative\n",
+    "dF = diff(F, rem)\n",
+    "print(dF)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "def F(r):\n",
+    "    G = 6.674e-11\n",
+    "    return G*m1*m2/r**2\n",
+    "Fem = F(rem)\n",
+    "print(Fem)\n",
+    "\n",
+    "dF = diff(F, rem)\n",
+    "print(dF)\n",
+    "print('Exact value: ', -2*6.674e-11*m1*m2/rem**3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# Now calculate the gravitational force between earth and the sun\n",
+    "m1 = 5.97e24  # [Kg] Mass of earth\n",
+    "m2 = 1.99e30  # [Kg] Mass of the sun\n",
+    "res = 149668992000.  # [m] distance between earth and moon\n",
+    "\n",
+    "Fes = F(res)\n",
+    "print(Fes)\n",
+    "\n",
+    "# Find the derivative\n",
+    "dF = diff(F, res)\n",
+    "print(dF)\n",
+    "print('Exact value: ', -2*6.674e-11*m1*m2/res**3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "# Other inconvinient solution:\n",
+    "def F1(t):\n",
+    "    G = 6.674e-11\n",
+    "    return G*m1_1*m2_1/r**2\n",
+    "def F2(t):\n",
+    "    G = 6.674e-11\n",
+    "    return G*m1_2*m2_2/r**2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The best way to solve this issues is by implementing the function as a class:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "class Y:\n",
+    "    '''  \n",
+    "    Mathematical function for the Newton's Law of Universal Gravitation.\n",
+    "    \n",
+    "    Methods:\n",
+    "    constructor(m1): set first mass to m1.\n",
+    "    constructor(m2): set second mass to m2.\n",
+    "    value(r): compute the force as function of r.\n",
+    "        \n",
+    "    Attributes:\n",
+    "    m1: is the first mass.\n",
+    "    m2: is the second mass.\n",
+    "    G:  gravitational constant (fixed).\n",
+    "    '''\n",
+    "    def __init__(self, m1, m2):\n",
+    "        self.m1 = m1\n",
+    "        self.m2 = m2\n",
+    "        self.G = 6.674e-11\n",
+    "    def value(self, r):\n",
+    "        return self.G*self.m1*self.m2/r**2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can now see how this class can be used to compute values of $Y=f(r ; m_1, m_2)$.\n",
+    "\n",
+    "This class creates new objects of type `Y` called instances. In order to construct the instance we use the following statement:\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "me = 5.97e24  # [Kg] Mass of earth\n",
+    "mm = 7.35e22  # [Kg] Mass of the moon\n",
+    "ms = 1.99e30  # [Kg] Mass of the sun\n",
+    "yem = Y(me, mm)\n",
+    "yes = Y(me, ms)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If we now want to find the value of the function at a given distance `r`, we just need to call its `value` method:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "Fem = yem.value(rem)\n",
+    "print(Fem)\n",
+    "Fes = yes.value(res)\n",
+    "print(Fes)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can also use `yem.value`and `yes.value` as ordinary functions of `r`. We can differentiate them:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "dyem = diff(yem.value, rem)\n",
+    "print(dyem)\n",
+    "dyes = diff(yes.value, res)\n",
+    "print(dyes)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 8.1 Inheritance and polymorphism"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A family of classes is also known as a class hierarchy. Child classes can inherit data and methods from parent classes, modify them, and add their own. This means that if we have a class with some functionality, we can extend this class by creating a child class and simply add the functionality we need there. The original class is still available and the new functionality is implemented in a separate child class that is small, since it does not need to repeat the code in the parent class.\n",
+    "\n",
+    "Inheritance is the ability to create new types that derive properties from existing types.\n",
+    "\n",
+    "A parent class is usually called _base class_ or _superclass_, while the child class is known as a _subclass_ or _derived class_. \n",
+    "\n",
+    "Example: a Student *class*: an object gathering several\n",
+    "custom functions (*methods*) and\n",
+    "variables (*attributes*)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "class Student(object):\n",
+    "    def __init__(self, name):\n",
+    "        self.name = name\n",
+    "    def set_age(self, age):\n",
+    "        self.age = age\n",
+    "    def set_major(self, major):\n",
+    "        self.major = major\n",
+    "    def show_major(self):\n",
+    "        print(self.name + \"'s major is: \" + self.major)\n",
+    "\n",
+    "anna = Student('anna')\n",
+    "anna.set_age(21)\n",
+    "anna.set_major('physics')\n",
+    "anna.name"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "anna.show_major()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The Student class has attributes `name`, `age` and `major` and has `__init__`, `set_age` and `set_major` methods.\n",
+    "\n",
+    "Methods and attributes are called using:\n",
+    "    `classinstance.method()` or `classinstance.attribute`."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Consider new class `MasterStudent`: same as Student class, but with additional\n",
+    "`internship` attribute. The class inherits all the methods and attributes from the parent class and adds its own:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "class MasterStudent(Student):\n",
+    "    internship = 'mandatory, from March to June'\n",
+    "    def show_major(self):\n",
+    "        print(self.name + \"'s major is: \" + self.major + \" at a Master's level\")\n",
+    "\n",
+    "james = MasterStudent('james')\n",
+    "james.set_major('maths')\n",
+    "james.internship\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "james.set_age(23)\n",
+    "james.age\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "james.show_major()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Polymorphism, refers to coding with polymorphic methods. A method that is overloaded (redefined or overridden) is said to be polymorphic. When a superclass provides some default implementation of a method, and a subclass overloads the method with the purpose of tailoring the method to a particular application the code is called polymorphic.\n",
+    "\n",
+    "In the above example the `show_major` method was overloaded in the `MasterStudent` class."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Exercise**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Implement a class hierarchy for numerical integration:\n",
+    "$$\\int_{a}^{b}f(x)dx\\approx\\sum\\limits _{i=1}^{n-1}w_if(x_i)$$\n",
+    "See http://www2.math.umd.edu/~dlevy/classes/amsc466/lecture-notes/integration-chap.pdf, https://en.wikipedia.org/wiki/Numerical_integration and https://en.wikipedia.org/wiki/Gaussian_quadrature for more details. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "The following integration composite integration rules will be implemented:\n",
+    "\n",
+    "**Composite Midpoint rule**\n",
+    "$$\\int_{a}^{b}f(x)dx\\approx h\\sum\\limits _{i=0}^{n-1}f\\left(a+\\frac{h}{2}+ih\\right)$$\n",
+    "\n",
+    "\n",
+    "<table>\n",
+    "  <col width=\"220\">\n",
+    "  <col width=\"180\">\n",
+    "  <col width=\"180\">\n",
+    "  <thead>\n",
+    "    <tr>\n",
+    "      <th style=\"text-align: center\">Weights: $w_i$</th>\n",
+    "      <th style=\"text-align: center\">Evaluation Points $x_i$</th>\n",
+    "      <th style=\"text-align: center\">$h$</th>\n",
+    "    </tr>\n",
+    "  </thead>\n",
+    "  <tbody>\n",
+    "    <tr>\n",
+    "      <td style=\"text-align: center\">$w_i=h, i=0,\\ldots,n-1$</td>\n",
+    "      <td style=\"text-align: center\">$a+\\frac{h}{2}+ih$</td>\n",
+    "      <td style=\"text-align: center\">$\\frac{b-a}{n}$</td>\n",
+    "    </tr>\n",
+    "  </tbody>\n",
+    "</table>\n",
+    "\n",
+    "\n",
+    "**Composite Trapezoidal rule**\n",
+    "$$\\int_{a}^{b}f(x)dx\\approx h\\left(\\frac{1}{2}f(a)+\\sum\\limits _{i=1}^{n-1}f(a+ih)+\\frac{1}{2}f(b)\\right)$$\n",
+    "\n",
+    "\n",
+    "<table>\n",
+    "  <col width=\"220\">\n",
+    "  <col width=\"180\">\n",
+    "  <col width=\"180\">\n",
+    "  <thead>\n",
+    "    <tr>\n",
+    "      <th style=\"text-align: center\">Weights: $w_i$</th>\n",
+    "      <th style=\"text-align: center\">Evaluation Points $x_i$</th>\n",
+    "      <th style=\"text-align: center\">$h$</th>\n",
+    "    </tr>\n",
+    "  </thead>\n",
+    "  <tbody>\n",
+    "    <tr>\n",
+    "      <td style=\"text-align: center\">$w_i=h, i=1,\\ldots,n-2$, $w_0=w_{n-1}=\\frac{h}{2}$</td>\n",
+    "      <td style=\"text-align: center\">$a+ih$</td>\n",
+    "      <td style=\"text-align: center\">$\\frac{b-a}{n-1}$</td>\n",
+    "    </tr>\n",
+    "  </tbody>\n",
+    "</table>\n",
+    "\n",
+    "\n",
+    "**Composite Simpson rule**\n",
+    "$$\\int_{a}^{b}f(x)dx\\approx\\frac{h}{3}\\left(f(a)+4\\sum\\limits _{i=1}^{n/2}f(a+\\left(2i-1\\right)h)+2\\sum\\limits _{i=1}^{n/2-1}f(a+2ih)+f(b)\\right)$$\n",
+    "\n",
+    "<table>\n",
+    "  <col width=\"220\">\n",
+    "  <col width=\"180\">\n",
+    "  <col width=\"180\">\n",
+    "  <thead>\n",
+    "    <tr>\n",
+    "      <th style=\"text-align: center\">Weights: $w_i$</th>\n",
+    "      <th style=\"text-align: center\">Evaluation Points $x_i$</th>\n",
+    "      <th style=\"text-align: center\">$h$</th>\n",
+    "    </tr>\n",
+    "  </thead>\n",
+    "  <tbody>\n",
+    "    <tr>\n",
+    "      <td style=\"text-align: center\">$w_i=\\frac{2h}{3}, i=2,4,\\ldots,n-3$, $w_i=\\frac{4h}{3}, i=1,3,\\ldots,n-2$ , $w_0=w_{n-1}=\\frac{h}{3}$</td>\n",
+    "      <td style=\"text-align: center\">$a+ih$</td>\n",
+    "      <td style=\"text-align: center\">$\\frac{b-a}{n-1}$</td>\n",
+    "    </tr>\n",
+    "  </tbody>\n",
+    "</table>\n",
+    "\n",
+    "And the following weighted quadrature rule will be implemented:\n",
+    "\n",
+    "**Gauss–Legendre quadrature**\n",
+    "$$\\int_{a}^{b}f(x)dx\\approx h\\left(\\sum\\limits _{i=0}^{n/2}f\\left(a+\\left(2i+1\\right)h-\\frac{h}{\\sqrt{3}}\\right)+\\sum\\limits _{i=0}^{n/2}f\\left(a+\\left(2i+1\\right)h+\\frac{h}{\\sqrt{3}}\\right)\\right)$$\n",
+    "\n",
+    "<table>\n",
+    "  <col width=\"220\">\n",
+    "  <col width=\"310\">\n",
+    "  <col width=\"180\">\n",
+    "  <thead>\n",
+    "    <tr>\n",
+    "      <th style=\"text-align: center\">Weights: $w_i$</th>\n",
+    "      <th style=\"text-align: center\">Evaluation Points $x_i$</th>\n",
+    "      <th style=\"text-align: center\">$h$</th>\n",
+    "    </tr>\n",
+    "  </thead>\n",
+    "  <tbody>\n",
+    "    <tr>\n",
+    "      <td style=\"text-align: center\">$w_i=h, i=0,\\ldots,n-1$</td>\n",
+    "      <td style=\"text-align: center\">$a+\\left(2i+1\\right)h-\\frac{h}{\\sqrt{3}}, i=0,2,\\ldots,n-2$, $a+\\left(2i+1\\right)h+\\frac{h}{\\sqrt{3}}, i=1,3,\\ldots,n-1$</td>\n",
+    "      <td style=\"text-align: center\">$\\frac{b-a}{n}$</td>\n",
+    "    </tr>\n",
+    "  </tbody>\n",
+    "</table>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.4.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}
